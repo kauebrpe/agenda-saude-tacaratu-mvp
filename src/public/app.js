@@ -8,32 +8,35 @@ let campanhasDisponiveis = [];
 function criarElemento(tag, texto, classe = "") {
   const elemento = document.createElement(tag);
   elemento.textContent = texto;
-
-  if (classe) {
-    elemento.className = classe;
-  }
-
+  if (classe) elemento.className = classe;
   return elemento;
+}
+
+function mostrarMensagem(texto, erro = false) {
+  mensagem.textContent = texto;
+  mensagem.className = erro ? "mensagem erro" : "mensagem";
 }
 
 function renderizarCampanhas(campanhas) {
   lista.replaceChildren();
 
   if (campanhas.length === 0) {
-    mensagem.textContent = "Nenhuma campanha encontrada.";
+    mostrarMensagem(
+      campanhasDisponiveis.length === 0
+        ? "Nenhuma campanha disponível."
+        : "Nenhuma campanha encontrada nesta categoria."
+    );
     return;
   }
 
-  mensagem.textContent = "";
+  mostrarMensagem("");
 
   campanhas.forEach((campanha) => {
     const cartao = document.createElement("article");
     cartao.className = "campanha";
 
     const botao = criarElemento(
-      "button",
-      "Ver detalhes",
-      "botao-detalhes"
+      "button", "Ver detalhes", "botao-detalhes"
     );
 
     botao.addEventListener("click", () => {
@@ -53,12 +56,10 @@ function renderizarCampanhas(campanhas) {
 }
 
 function aplicarFiltro() {
-  const categoria = filtro.value;
-
-  const resultado = categoria === "todas"
+  const resultado = filtro.value === "todas"
     ? campanhasDisponiveis
     : campanhasDisponiveis.filter(
-        (campanha) => campanha.categoria === categoria
+        (item) => item.categoria === filtro.value
       );
 
   renderizarCampanhas(resultado);
@@ -79,47 +80,70 @@ function carregarCategorias() {
 }
 
 async function carregarCampanhas() {
-  try {
-    mensagem.textContent = "Carregando campanhas...";
+  lista.replaceChildren();
+  filtro.disabled = true;
+  mostrarMensagem("Carregando campanhas...");
 
+  try {
     const resposta = await fetch("/api/campanhas");
 
     if (!resposta.ok) {
-      throw new Error("Falha ao carregar campanhas.");
+      throw new Error(`Erro HTTP ${resposta.status}`);
     }
 
-    campanhasDisponiveis = await resposta.json();
+    const dados = await resposta.json();
 
+    if (!Array.isArray(dados)) {
+      throw new Error("Formato de dados inválido.");
+    }
+
+    campanhasDisponiveis = dados;
     carregarCategorias();
+    filtro.disabled = false;
     aplicarFiltro();
+
   } catch (erro) {
+    campanhasDisponiveis = [];
     lista.replaceChildren();
-    mensagem.textContent = "Não foi possível carregar as campanhas.";
+
+    mostrarMensagem(
+      "Não foi possível carregar as campanhas. Tente novamente.",
+      true
+    );
+
+    const tentar = criarElemento(
+      "button", "Tentar novamente", "botao-detalhes"
+    );
+
+    tentar.addEventListener("click", carregarCampanhas);
+    lista.appendChild(tentar);
+
     console.error(erro);
   }
 }
 
 async function mostrarDetalhes(id) {
-  try {
-    mensagem.textContent = "Carregando detalhes...";
+  lista.replaceChildren();
+  mostrarMensagem("Carregando detalhes...");
 
+  try {
     const resposta = await fetch(`/api/campanhas/${id}`);
 
-    if (!resposta.ok) {
+    if (resposta.status === 404) {
       throw new Error("Campanha não encontrada.");
     }
 
-    const campanha = await resposta.json();
+    if (!resposta.ok) {
+      throw new Error("Falha na consulta.");
+    }
 
-    lista.replaceChildren();
+    const campanha = await resposta.json();
 
     const cartao = document.createElement("article");
     cartao.className = "campanha detalhe";
 
     const voltar = criarElemento(
-      "button",
-      "Voltar às campanhas",
-      "botao-detalhes"
+      "button", "Voltar às campanhas", "botao-detalhes"
     );
 
     voltar.addEventListener("click", aplicarFiltro);
@@ -135,13 +159,21 @@ async function mostrarDetalhes(id) {
     );
 
     lista.appendChild(cartao);
-    mensagem.textContent = "";
+    mostrarMensagem("");
+
   } catch (erro) {
-    mensagem.textContent = "Não foi possível carregar os detalhes.";
+    mostrarMensagem(erro.message, true);
+
+    const voltar = criarElemento(
+      "button", "Voltar às campanhas", "botao-detalhes"
+    );
+
+    voltar.addEventListener("click", aplicarFiltro);
+    lista.appendChild(voltar);
+
     console.error(erro);
   }
 }
 
 filtro.addEventListener("change", aplicarFiltro);
-
 carregarCampanhas();
