@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MVP acadêmico de divulgação de campanhas e ações de saúde em Tacaratu.">
+  <title>Agenda Saúde Tacaratu</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="cabecalho">
+    <div class="container">
+      <h1>Agenda Saúde Tacaratu</h1>
+      <p>Campanhas e ações de saúde em um só lugar</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="titulo-campanhas">
+      <h2 id="titulo-campanhas">Campanhas de Saúde</h2>
+      <p>Consulte as campanhas demonstrativas disponíveis.</p>
+
+      <p id="mensagem" role="status" aria-live="polite">
+        Carregando campanhas...
+      </p>
+
+      <div id="lista-campanhas" class="grade-campanhas"></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Protótipo acadêmico — dados fictícios, sem vínculo oficial com órgãos de saúde.</p>
+  </footer>
+</body>
+</html>
