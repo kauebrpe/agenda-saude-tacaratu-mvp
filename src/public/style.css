@@ -1,3 +1,28 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #17324d;
+  background: #f4f8fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.cabecalho {
+  background: #075985;
+  color: white;
+  padding: 45px 0;
+}
 
 .botao-detalhes {
   display: inline-block;
@@ -49,4 +74,21 @@
 .area-filtro select:focus-visible {
   outline: 3px solid #f59e0b;
   outline-offset: 2px;
+}
+
+.mensagem {
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.mensagem.erro {
+  color: #991b1b;
+  background: #fee2e2;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.area-filtro select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
