@@ -92,3 +92,105 @@ body {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+
+/* Melhorias visuais e responsividade — Issue #19 */
+
+body {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+main {
+  flex: 1;
+}
+
+.cabecalho {
+  background: linear-gradient(135deg, #075985, #0f766e);
+}
+
+.cabecalho h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+}
+
+.grade-campanhas {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 280px), 1fr)
+  );
+  gap: 24px;
+  align-items: stretch;
+}
+
+.campanha {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  padding: 25px;
+  border: 1px solid #dbe5ef;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(15, 35, 55, 0.08);
+}
+
+.campanha h3,
+.campanha p {
+  margin: 0;
+}
+
+.campanha h3 {
+  font-size: 1.2rem;
+}
+
+.campanha .categoria {
+  align-self: flex-start;
+}
+
+.botao-detalhes {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.detalhe {
+  width: 100%;
+  max-width: 650px;
+}
+
+.rodape {
+  margin-top: auto;
+  padding: 24px 16px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 92%;
+  }
+
+  .cabecalho {
+    padding: 35px 0;
+  }
+
+  main {
+    padding-top: 25px;
+  }
+
+  .grade-campanhas {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .campanha {
+    padding: 20px;
+  }
+
+  .area-filtro {
+    max-width: 100%;
+  }
+
+  .area-filtro select {
+    width: 100%;
+  }
+}
