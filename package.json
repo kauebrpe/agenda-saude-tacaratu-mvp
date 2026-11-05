@@ -1,0 +1,27 @@
+{
+  "name": "agenda-saude-tacaratu-mvp",
+  "version": "1.0.0",
+  "description": "![Versão](https://img.shields.io/badge/vers%C3%A3o-0.1.0--planejada-blue)\r ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)\r ![Testes](https://img.shields.io/badge/testes-n%C3%A3o%20executados-lightgrey)\r ![Licença](https://img.shields.io/badge/licen%C3%A7a-a%20definir-lightgrey)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+ "scripts": {
+  "start": "node src/server.js"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kauebrpe/agenda-saude-tacaratu-mvp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kauebrpe/agenda-saude-tacaratu-mvp/issues"
+  },
+  "homepage": "https://github.com/kauebrpe/agenda-saude-tacaratu-mvp#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
