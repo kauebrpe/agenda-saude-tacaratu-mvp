@@ -1,9 +1,9 @@
 # 🏥 Agenda Saúde Tacaratu — MVP
 
-![Versão](https://img.shields.io/badge/vers%C3%A3o-0.1.0--planejada-blue)
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
-![Testes](https://img.shields.io/badge/testes-n%C3%A3o%20executados-lightgrey)
-![Licença](https://img.shields.io/badge/licen%C3%A7a-a%20definir-lightgrey)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-v0.1.0%20em%20prepara%C3%A7%C3%A3o-blue)
+![Status](https://img.shields.io/badge/status-MVP%20funcional-brightgreen)
+![Testes](https://img.shields.io/badge/testes-5%20aprovados-brightgreen)
+![Licença](https://img.shields.io/badge/licen%C3%A7a-n%C3%A3o%20definida-lightgrey)
 
 ## 📌 Sobre o projeto
 
@@ -28,12 +28,15 @@ O projeto integra as atividades do curso **Desenvolvimento Web Full Stack para M
 | Funcionalidade | Situação |
 |---|---|
 | Planejamento e especificações | ✅ Documentados |
-| Listagem de campanhas | 📋 Planejada |
-| Consulta de detalhes | 📋 Planejada |
-| Filtro por categoria | 📋 Planejado |
-| API REST | 📋 Planejada |
-| Interface responsiva | 📋 Planejada |
-| Testes automatizados | 📋 Planejados |
+| Servidor Node.js e Express | ✅ Implementado |
+| API REST de campanhas | ✅ Implementada |
+| Listagem de campanhas | ✅ Implementada |
+| Consulta de detalhes | ✅ Implementada |
+| Filtro por categoria | ✅ Implementado |
+| Tratamento de erros | ✅ Implementado |
+| Interface responsiva | ✅ Implementada |
+| Testes automatizados da API | ✅ 5 aprovados |
+| Agendamento real de consultas | Fora do escopo |
 
 Esta tabela será atualizada conforme as funcionalidades forem implementadas e verificadas.
 
@@ -71,6 +74,47 @@ agenda-saude-tacaratu-mvp/
 - [Histórias de Usuário](docs/user-stories.md)
 
 ## ⚙️ Instalação e execução local
+
+### Instalar as dependências
+
+```bash
+npm install
+```
+
+No PowerShell, caso o npm seja bloqueado pela política de execução, utilize `npm.cmd install`.
+
+### Iniciar o servidor
+
+```bash
+npm start
+```
+
+No PowerShell, utilize `npm.cmd start`, se necessário.
+
+Acesse no navegador:
+
+http://localhost:3000
+
+### Endpoints da API
+
+| Método | Endpoint | Descrição |
+|---|---|---|
+| GET | `/api/health` | Verificar o servidor |
+| GET | `/api/campanhas` | Listar campanhas |
+| GET | `/api/campanhas/1` | Consultar campanha por ID |
+| GET | `/api/campanhas/999` | Exemplo de resposta HTTP 404 |
+
+### Executar testes automatizados
+
+```bash
+npm test
+```
+
+No PowerShell, utilize `npm.cmd test`, se necessário.
+
+**Validação inicial:** 5 testes aprovados e 0 falhas.
+
+As campanhas apresentadas são fictícias e demonstrativas.
 
 ### Pré-requisitos
 
