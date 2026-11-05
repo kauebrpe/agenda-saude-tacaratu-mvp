@@ -23,3 +23,30 @@
 .detalhe {
   max-width: 650px;
 }
+
+
+.area-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  margin-top: 25px;
+}
+
+.area-filtro label {
+  font-weight: bold;
+}
+
+.area-filtro select {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #17324d;
+  font-size: 15px;
+}
+
+.area-filtro select:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
