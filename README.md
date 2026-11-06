@@ -50,7 +50,7 @@ Esta tabela será atualizada conforme as funcionalidades forem implementadas e v
 - Git e GitHub
 - Visual Studio Code
 
-Node.js e Express fazem parte da stack planejada. A configuração da aplicação será realizada nas próximas etapas.
+Node.js e Express são utilizados no servidor e na API REST do MVP. A aplicação está implementada, com rotas HTTP, interface web e testes automatizados.
 
 ## 📁 Estrutura do projeto
 
@@ -140,11 +140,31 @@ cd agenda-saude-tacaratu-mvp
 git switch develop
 ```
 
+
 ### 4. Instalar e executar
 
-A instalação das dependências e a execução do servidor ainda serão configuradas.
+Instale as dependências:
 
-Após a implementação, esta seção será atualizada com os comandos reais de instalação e inicialização, que deverão ser testados localmente.
+```bash
+npm install
+```
+
+Inicie a aplicação:
+
+```bash
+npm start
+```
+
+Acesse http://localhost:3000 no navegador.
+
+Para executar os testes automatizados:
+
+```bash
+npm test
+```
+
+No PowerShell do Windows, utilize `npm.cmd` no lugar de `npm` caso a política de execução bloqueie o comando.
+
 
 ## 🌿 Estratégia Git Flow
 
