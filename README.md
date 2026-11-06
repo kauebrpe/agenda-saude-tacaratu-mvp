@@ -1,6 +1,6 @@
 # 🏥 Agenda Saúde Tacaratu — MVP
 
-![Versão](https://img.shields.io/badge/vers%C3%A3o-v0.1.0%20em%20prepara%C3%A7%C3%A3o-blue)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-v0.1.0%20publicada-brightgreen)
 ![Status](https://img.shields.io/badge/status-MVP%20funcional-brightgreen)
 ![Testes](https://img.shields.io/badge/testes-5%20aprovados-brightgreen)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-n%C3%A3o%20definida-lightgrey)
