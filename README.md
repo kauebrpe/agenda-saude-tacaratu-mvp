@@ -15,6 +15,24 @@ O projeto integra as atividades do curso **Desenvolvimento Web Full Stack para M
 
 > **Aviso:** este é um protótipo acadêmico independente. Não representa uma plataforma oficial da prefeitura ou do SUS. Os dados utilizados serão fictícios e demonstrativos.
 
+
+## 🏗️ Arquitetura do sistema
+
+```mermaid
+flowchart TD
+    A["Visitante"] --> B["Navegador Web"]
+    B --> C["Front-end: HTML, CSS e JavaScript"]
+    C -->|"HTTP / JSON"| D["Back-end: Node.js + Express"]
+    D --> E["API REST"]
+    E --> F["Dados fictícios: src/campanhas.js"]
+    F --> E
+    E --> C
+    D --> G["Arquivos estáticos: src/public"]
+```
+
+📘 [Consultar documentação completa da arquitetura](docs/arquitetura.md)
+
+
 ## 🎯 Objetivos
 
 - Facilitar a consulta demonstrativa de campanhas de saúde.
