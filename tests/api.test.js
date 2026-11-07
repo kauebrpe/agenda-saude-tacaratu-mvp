@@ -59,3 +59,97 @@ test("Campanhas possuem campos obrigatórios", async () => {
     assert.ok(campanha.local);
   }
 });
+
+test("Health informa o projeto", async () => {
+  const r = await fetch(`${urlBase}/api/health`);
+  const d = await r.json();
+  assert.ok(typeof d.projeto === "string" && d.projeto.length > 0);
+});
+
+test("Health informa mensagem de funcionamento", async () => {
+  const r = await fetch(`${urlBase}/api/health`);
+  const d = await r.json();
+  assert.ok(typeof d.mensagem === "string" && d.mensagem.length > 0);
+});
+
+test("Health utiliza resposta JSON", async () => {
+  const r = await fetch(`${urlBase}/api/health`);
+  assert.match(r.headers.get("content-type"), /application\/json/);
+});
+
+test("Listagem utiliza resposta JSON", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas`);
+  assert.match(r.headers.get("content-type"), /application\/json/);
+});
+
+test("Campanhas possuem identificadores numericos", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas`);
+  const dados = await r.json();
+  assert.ok(dados.every((c) => Number.isInteger(c.id) && c.id > 0));
+});
+
+test("Campanhas possuem identificadores unicos", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas`);
+  const dados = await r.json();
+  assert.equal(new Set(dados.map((c) => c.id)).size, dados.length);
+});
+
+test("Campanhas possuem titulos nao vazios", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas`);
+  const dados = await r.json();
+  assert.ok(dados.every((c) => typeof c.titulo === "string" && c.titulo.trim()));
+});
+
+test("Campanhas possuem categorias nao vazias", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas`);
+  const dados = await r.json();
+  assert.ok(dados.every((c) => typeof c.categoria === "string" && c.categoria.trim()));
+});
+
+test("Campanhas possuem descricoes nao vazias", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas`);
+  const dados = await r.json();
+  assert.ok(dados.every((c) => typeof c.descricao === "string" && c.descricao.trim()));
+});
+
+test("Campanhas possuem informacoes de data horario e local", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas`);
+  const dados = await r.json();
+  assert.ok(dados.every((c) =>
+    ["data", "horario", "local"].every((campo) =>
+      typeof c[campo] === "string" && c[campo].trim()
+    )
+  ));
+});
+
+test("Consulta por ID retorna os mesmos dados da listagem", async () => {
+  const lista = await (await fetch(`${urlBase}/api/campanhas`)).json();
+  const campanha = lista[0];
+  assert.ok(campanha);
+  const r = await fetch(`${urlBase}/api/campanhas/${campanha.id}`);
+  assert.equal(r.status, 200);
+  assert.deepEqual(await r.json(), campanha);
+});
+
+test("Campanha inexistente retorna erro em JSON", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas/999999`);
+  assert.equal(r.status, 404);
+  assert.match(r.headers.get("content-type"), /application\/json/);
+  const d = await r.json();
+  assert.ok(typeof d.erro === "string" && d.erro.length > 0);
+});
+
+test("Identificador alfabetico retorna HTTP 404", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas/abc`);
+  assert.equal(r.status, 404);
+});
+
+test("Identificador negativo retorna HTTP 404", async () => {
+  const r = await fetch(`${urlBase}/api/campanhas/-1`);
+  assert.equal(r.status, 404);
+});
+
+test("Rota de API desconhecida retorna HTTP 404", async () => {
+  const r = await fetch(`${urlBase}/api/rota-inexistente`);
+  assert.equal(r.status, 404);
+});
