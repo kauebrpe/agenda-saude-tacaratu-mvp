@@ -1,4 +1,4 @@
-﻿name: CI - Testes Node.js
+name: CI - Testes Node.js
 
 on:
   push:
@@ -26,6 +26,13 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
+
+      - name: Auditar dependencias
+        run: npm audit --audit-level=high
+
+      - name: Validar sintaxe JavaScript
+        run: |
+          find src -type f -name '*.js' -exec node --check {} \;
 
       - name: Executar testes
         run: npm test
