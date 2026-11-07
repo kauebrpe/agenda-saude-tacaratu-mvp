@@ -2,8 +2,20 @@
 
 ![Versão](https://img.shields.io/badge/vers%C3%A3o-v0.1.0%20publicada-brightgreen)
 ![Status](https://img.shields.io/badge/status-MVP%20funcional-brightgreen)
-![Testes](https://img.shields.io/badge/testes-5%20aprovados-brightgreen)
+![Testes](https://img.shields.io/badge/testes-20%20aprovados-brightgreen)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-n%C3%A3o%20definida-lightgrey)
+
+## 🌐 Aplicação publicada
+
+**Acesse o MVP:** https://agenda-saude-tacaratu-mvp.onrender.com/
+
+**Verificação da API:** https://agenda-saude-tacaratu-mvp.onrender.com/api/health
+
+A aplicação está publicada no Render, utilizando Docker, Node.js e Express.
+
+A versão demonstrativa permite consultar três campanhas fictícias, visualizar detalhes e filtrar por categoria.
+
+**Observação:** o serviço utiliza o plano gratuito do Render e pode levar alguns segundos para responder após um período de inatividade.
 
 ## 📌 Sobre o projeto
 
@@ -53,7 +65,7 @@ flowchart TD
 | Filtro por categoria | ✅ Implementado |
 | Tratamento de erros | ✅ Implementado |
 | Interface responsiva | ✅ Implementada |
-| Testes automatizados da API | ✅ 5 aprovados |
+| Testes automatizados da API | ✅ 20 aprovados |
 | Agendamento real de consultas | Fora do escopo |
 
 Esta tabela será atualizada conforme as funcionalidades forem implementadas e verificadas.
@@ -91,6 +103,35 @@ agenda-saude-tacaratu-mvp/
 - [Casos de Uso](docs/casos-de-uso.md)
 - [Histórias de Usuário](docs/user-stories.md)
 - [Matriz de Rastreabilidade](docs/matriz-rastreabilidade.md)
+
+## 🔍 Qualidade, CI e Docker
+
+O projeto possui integração contínua com GitHub Actions, configurada em `.github/workflows/ci.yml`.
+
+A esteira automatizada executa:
+
+- Instalação reproduzível das dependências com `npm ci`.
+- Auditoria de segurança com `npm audit --audit-level=high`.
+- Verificação de sintaxe dos arquivos JavaScript com `node --check`.
+- Execução dos 20 testes automatizados com `npm test`.
+- Validação da construção da imagem Docker com `docker build`.
+
+As verificações de qualidade são uma alternativa automatizada para o escopo acadêmico do MVP. Não representam uma análise completa do SonarQube.
+
+### Executar com Docker
+
+Na raiz do projeto, com Docker instalado:
+
+```bash
+docker build -t agenda-saude-tacaratu .
+docker run --rm -p 3000:3000 agenda-saude-tacaratu
+```
+
+Acesse `http://localhost:3000`.
+
+**Nota:** a imagem Docker foi construída com sucesso no GitHub Actions e utilizada no deploy do Render. A execução local com Docker não foi testada neste computador.
+
+**Evidências:** [Execuções do GitHub Actions](https://github.com/kauebrpe/agenda-saude-tacaratu-mvp/actions).
 
 ## ⚙️ Instalação e execução local
 
@@ -131,7 +172,7 @@ npm test
 
 No PowerShell, utilize `npm.cmd test`, se necessário.
 
-**Validação inicial:** 5 testes aprovados e 0 falhas.
+**Validação atual:** 20 testes automatizados aprovados e 0 falhas.
 
 As campanhas apresentadas são fictícias e demonstrativas.
 
@@ -232,4 +273,4 @@ Projeto acadêmico individual desenvolvido por [kauebrpe](https://github.com/kau
 
 **Contexto:** Compet Superior — Projeto Agenda Saúde Digital Tacaratu.
 
-**Última atualização documental:** 05/11/2026.
+**Última atualização documental:** 07/11/2026.
