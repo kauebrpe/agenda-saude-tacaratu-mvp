@@ -65,21 +65,13 @@ Não haverá cadastro ou autenticação de visitantes nesta versão.
 
 **RN05:** A aplicação não realizará agendamentos reais de consultas.
 
-## 7. Rastreabilidade Inicial
+## 7. Rastreabilidade
 
-| Requisito | Funcionalidade prevista | Referência de engenharia |
-|---|---|---|
-| RF01, RF02, RF10 | Listagem de campanhas | Issue de listagem / API |
-| RF03, RF08, RF09 | Detalhes de campanhas | Issue de detalhes / API |
-| RF04, RF05 | Filtro por categoria | Issue de filtros |
-| RF06, RNF08 | Estados vazios e erros | Issue de tratamento de erros |
-| RF07, RNF04 | API REST | Issue de API |
-| RNF01, RNF02 | Interface responsiva | Issue de interface |
-| RNF03, RNF10 | Execução local e README | Issues de setup / README |
-| RNF05, RNF07, RNF09 | Organização de engenharia | Issues de setup / revisão |
-| RNF06 | Proteção de dados pessoais | Restrição do escopo do MVP |
+A rastreabilidade consolidada dos requisitos está disponível na
+[Matriz de Rastreabilidade](matriz-rastreabilidade.md).
 
-Os números definitivos das Issues e as referências a casos de uso e histórias de usuário serão acrescentados conforme a evolução do backlog.
+A matriz relaciona requisitos funcionais e não funcionais aos casos de uso,
+histórias de usuário, Issues reais do GitHub e evidências de validação.
 
 ## 8. Critérios Gerais de Aceite
 
@@ -92,5 +84,5 @@ Os números definitivos das Issues e as referências a casos de uso e histórias
 ## 9. Referências Internas
 
 - [Project Charter](project-charter.md)
-- Casos de uso: documento a elaborar.
-- Histórias de usuário: documento a elaborar.
+- [Casos de Uso](casos-de-uso.md)
+- [Histórias de Usuário](user-stories.md)
