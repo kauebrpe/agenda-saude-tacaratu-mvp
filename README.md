@@ -90,6 +90,7 @@ agenda-saude-tacaratu-mvp/
 - [Requisitos Funcionais e Não Funcionais](docs/requisitos.md)
 - [Casos de Uso](docs/casos-de-uso.md)
 - [Histórias de Usuário](docs/user-stories.md)
+- [Matriz de Rastreabilidade](docs/matriz-rastreabilidade.md)
 
 ## ⚙️ Instalação e execução local
 
